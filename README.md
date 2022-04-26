@@ -33,4 +33,4 @@ ArgoCD with Dex Configuration
 <br />
 <br />
 
-    ![Login Page](/argocd-dex/ss/Login.JPG?raw=true "Login Page")
+    ![Login Page](ss/Login.JPG)
