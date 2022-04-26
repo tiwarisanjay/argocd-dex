@@ -28,8 +28,7 @@ ArgoCD with Dex Configuration
        
 - Now port-forward your server to localhost or use the loadbalancer IP and you should see following screen: 
 - URL should be : 
-    -   https://localhost
-    -   https://\<LoadBalancerIP>
+    -   https://localhost OR https://\<LoadBalancerIP>
     - Click on AZURETEST and it should authenticate your with AzureAD
 
     ![Login Page](ss/Login.JPG)
