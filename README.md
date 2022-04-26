@@ -30,7 +30,6 @@ ArgoCD with Dex Configuration
 - URL should be : 
     -   https://localhost
     -   https://\<LoadBalancerIP>
-<br />
-<br />
+    - 
 
     ![Login Page](ss/Login.JPG)
