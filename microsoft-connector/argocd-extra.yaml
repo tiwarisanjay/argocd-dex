@@ -1,0 +1,53 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: argo 
+--- 
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    app.kubernetes.io/name: argocd-secret
+    app.kubernetes.io/part-of: argocd
+  name: argocd-secret
+type: Opaque
+data:
+    oidc.azure.clientSecret: <Your Base64 Client Secret>
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-rbac-cm
+data: 
+  policy.default: role:readonly
+  policy.csv: |
+      p, role:org-admin, applications, *, */*, allow
+      p, role:org-admin, clusters, get, *, allow
+      p, role:org-admin, repositories, get, *, allow
+      p, role:org-admin, repositories, create, *, allow
+      p, role:org-admin, repositories, update, *, allow
+      p, role:org-admin, repositories, delete, *, allow
+      g, "84ce98d1-e359-4f3b-85af-985b458de3c6", role:org-admin
+--- 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-cm
+data:
+  url: https://<ArgoCD_Server_IP/URL>
+  dex.config: |
+    connectors:
+    - type: microsoft
+      id: microsoft
+      name: AzureTest
+      config:
+        clientID: <Your Clinet/ApplicationID of Azure app>
+        clientSecret: $oidc.azure.clientSecret
+        redirectURI: https://<ArgoCD_Server_IP/URL>/auth/callback
+        tenant: <TenantID>
