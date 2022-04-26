@@ -30,6 +30,6 @@ ArgoCD with Dex Configuration
 - URL should be : 
     -   https://localhost
     -   https://\<LoadBalancerIP>
-    - 
+    - Click on AZURETEST and it should authenticate your with AzureAD
 
     ![Login Page](ss/Login.JPG)
