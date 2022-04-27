@@ -16,9 +16,9 @@ ArgoCD with Dex Configuration
 
        -  \<Your Base64 Client Secret> : with your ClientSecret created in AzureAD for OCID application
        -  <Your Clinet/ApplicationID of Azure app> : Client/Application ID in AuzreAD OCID Application. 
-       -  <ArgoCD_Server_IP/URL> : If you port forward your application to localhost it should be localhost
-                                    If you create a nodeport type service it should be localhost:nodeport
-                                    If you create a loadbalancer it will be your loadbalancer IP
+       -  <ArgoCD_Server_IP/URL> : If you port forward your application to localhost it should be `localhost`
+                                    If you create a nodeport type service it should be `localhost:nodeport`
+                                    If you create a loadbalancer it will be your `loadbalancerIP`
 - Lets first apply the file with configmap and secret changes 
     ```
     kubectl apply -f microsoft-connector/argocd-extra.yaml -n argo 
