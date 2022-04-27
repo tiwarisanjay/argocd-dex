@@ -9,8 +9,9 @@ ArgoCD with Dex Configuration
 - I worked with GKE so still needs to work with localhost. It should work for localhost too where the IP/URL is required.
  
 ## Lets run some commands now to get it work
+### Microsoft Connector
 - Following file needs to be updated: 
-    - argocd-extra.yaml 
+    - microsoft-connector/argocd-extra.yaml 
 
        -  \<Your Base64 Client Secret> : with your ClientSecret created in AzureAD for OCID application
        -  <Your Clinet/ApplicationID of Azure app> : Client/Application ID in AuzreAD OCID Application. 
@@ -19,11 +20,11 @@ ArgoCD with Dex Configuration
                                     If you create a loadbalancer it will be your loadbalancer IP
 - Lets first apply the file with configmap and secret changes 
     ```
-    kubectl apply -f argocd-extra.yaml -n argo 
+    kubectl apply -f microsoft-connector/argocd-extra.yaml -n argo 
     ```
 - Lets install argocd now
     ```
-    kubectl apply -f argocd-install.yaml -n argo 
+    kubectl apply -f microsoft-connector/argocd-install.yaml -n argo 
     ```
        
 - Now port-forward your server to localhost or use the loadbalancer IP and you should see following screen: 
