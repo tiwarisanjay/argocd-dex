@@ -2,7 +2,7 @@
 ArgoCD with Dex Configuration
 # ArgoCD Dex Integration with Microsoft connector 
 ## Prerequsites 
-- Create new application in AzureAD OCID follow following link for the same
+- Create new application in AzureAD OIDC follow following link for the same
     [Quick Start : Register an application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
 - Call back URL in your AzureAD application would be : 
     - https://<ArgoCD_Server_IP/URL>/api/dex/callback
@@ -14,8 +14,8 @@ ArgoCD with Dex Configuration
 - Following file needs to be updated: 
     - microsoft-connector/argocd-extra.yaml 
 
-       -  \<Your Base64 Client Secret> : with your ClientSecret created in AzureAD for OCID application
-       -  <Your Clinet/ApplicationID of Azure app> : Client/Application ID in AuzreAD OCID Application. 
+       -  \<Your Base64 Client Secret> : with your ClientSecret created in AzureAD for OIDC application
+       -  <Your Clinet/ApplicationID of Azure app> : Client/Application ID in AuzreAD OIDC Application. 
        -  <ArgoCD_Server_IP/URL> : If you port forward your application to localhost it should be `localhost`
                                     If you create a nodeport type service it should be `localhost:nodeport`
                                     If you create a loadbalancer it will be your `loadbalancerIP`
