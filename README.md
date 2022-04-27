@@ -10,6 +10,7 @@ ArgoCD with Dex Configuration
  
 ## Lets run some commands now to get it work
 ### Microsoft Connector
+
 - Following file needs to be updated: 
     - microsoft-connector/argocd-extra.yaml 
 
