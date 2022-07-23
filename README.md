@@ -11,7 +11,7 @@ ArgoCD with Dex Configuration
     ```
 - Get Initial Secret : 
     ```
-        kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
     ```
 - Login to ArgoCD server to upate password 
     ```bash
