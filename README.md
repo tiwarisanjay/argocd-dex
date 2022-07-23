@@ -1,5 +1,23 @@
 # argocd-dex
 ArgoCD with Dex Configuration
+# Install ArgoCD 
+- To Install argoCD. Update the version if required.
+    ```bash
+        kubectl apply -k argocd-install/
+    ```
+- If you are using public cloud update svc for argocd-server as load balancer"
+    ```bash
+    kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+    ```
+- Get Initial Secret : 
+    ```
+        kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+    ```
+- Login to ArgoCD server to upate password 
+    ```bash
+    argocd login <ARGOCD_SERVER>
+    argocd account update-password
+    ```
 # ArgoCD Dex Integration with Microsoft connector 
 ## Prerequsites 
 - Create new application in AzureAD OIDC follow following link for the same
