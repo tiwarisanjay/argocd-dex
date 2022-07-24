@@ -15,7 +15,7 @@ ArgoCD with Dex Configuration
     ```
 - Login to ArgoCD server to upate password 
     ```bash
-    argocd login <ARGOCD_SERVER>
+    argocd login <ARGOCD_SERVER> # Just  the IP:PORT
     argocd account update-password
     ```
 # ArgoCD Dex Integration with Microsoft connector 
