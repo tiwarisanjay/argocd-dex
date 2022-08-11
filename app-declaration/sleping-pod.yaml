@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sleep-pod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:tiwarisanjay/pod-testing-yamls.git
+    targetRevision: HEAD
+    path: test-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: testns
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
