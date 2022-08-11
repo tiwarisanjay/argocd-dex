@@ -3,13 +3,11 @@ kind: Kustomization
 
 resources:
   - ../base
-  - overlays/private-repo-cred.yaml
   - overlays/repository.yaml
 
 patchesStrategicMerge:
   - overlays/nodeport.yaml
   - overlays/argocd-cm.yaml
-  - overlays/argocd-secret.yaml
   - overlays/argocd-rbac-cm.yaml
 
 namespace: argocd
