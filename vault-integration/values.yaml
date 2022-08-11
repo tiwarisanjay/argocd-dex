@@ -1,0 +1,50 @@
+injector:
+  # True if you want to enable vault agent injection.
+  enabled: "false"
+  # Use the Vault K8s Image
+  image:
+    repository: 'hashicorp/vault-k8s'
+    tag: 'latest'
+server:
+
+  # Affinity Settings
+  # Commenting out or setting as empty the affinity variable, will allow
+  # deployment to single node services such as Minikube
+  affinity: null
+  
+  # Run Vault in "standalone" mode. This is the default mode that will deploy if
+  # no arguments are given to helm. This requires a PVC for data storage to use
+  # the "file" backend.  This mode is not highly available and should not be scaled
+  # past a single replica.
+  standalone:
+    enabled: "false"
+
+  # Run Vault in "HA" mode. There are no storage requirements unless audit log
+  # persistence is required.  In HA mode Vault will configure itself to use Consul
+  # for its storage backend.  The default configuration provided will work the Consul
+  # Helm project by default.  It is possible to manually configure Vault to use a
+  # different HA backend.
+  ha:
+    enabled: "true"
+    # config is a raw string of default configuration when using a Stateful
+    # deployment. Default is to use a Consul for its HA storage backend.
+    # This should be HCL.
+
+    # Note: Configuration files are stored in ConfigMaps so sensitive data
+    # such as passwords should be either mounted through extraSecretEnvironmentVars
+    # or through a Kube secret.  For more information see:
+    # https://www.vaultproject.io/docs/platform/k8s/helm/run#protecting-sensitive-vault-configurations
+    config: |
+      ui = true
+      listener "tcp" {
+        tls_disable = 1
+        address = "[::]:8200"
+        cluster_address = "[::]:8201"
+      }
+      service_registration "kubernetes" {}
+# Vault UI
+ui:
+  enabled: true
+  serviceType: "NodePort"
+  serviceNodePort: 30002
+  externalPort: 8200

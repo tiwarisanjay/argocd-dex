@@ -1,2 +1,5 @@
 */working*
 */myvalues
+argocd-install/docker-install/overlays/private-repo-cred.yaml
+argocd-install/docker-install/overlays/argocd-secret.yaml
+argocd-install/docker-install/overlays/repository.yaml
