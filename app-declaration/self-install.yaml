@@ -13,5 +13,4 @@ spec:
     server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
-      automated:
-        selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
+      automated: {}
