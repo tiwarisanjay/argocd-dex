@@ -9,7 +9,7 @@ spec:
     repoURL: https://github.com/tiwarisanjay/application-charts.git
     targetRevision: HEAD
     helm:
-      valueFile:
+      valueFiles:
       - dev-values.yaml
   destination:
     server: https://kubernetes.default.svc
