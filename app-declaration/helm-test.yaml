@@ -6,9 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/tiwarisanjay/argoworkflow-install.git
+    repoURL: https://github.com/tiwarisanjay/application-charts.git
     targetRevision: HEAD
-    path: base
+    helm:
+      valueFile:
+      - dev-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: argo 
