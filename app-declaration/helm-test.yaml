@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/tiwarisanjay/application-charts.git
-    path: test
+    path: testchart
     targetRevision: HEAD
     helm:
       valueFiles:
